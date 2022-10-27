@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="card-header">
+    <h3>{{titre | uppercase}}</h3>
+  <div class="alert alert-warning" *ngIf="utilisateurForm.dirty && utilisateurForm.invalid">Entrer une valeur valide pour chaque champ</div>
+  <div class="alert alert-warning" *ngIf="utilisateurForm.dirty && nom.invalid">Entrer un prenom et un nom sur au moins cinq (5) caractères</div>
+  </div>
+  <div class="card-body">
+    <form class="row g-3" #utilisateurForm="ngForm" (ngSubmit)="enregistrerUtilisateur(utilisateurForm)">
+        <div class=" col-md-4 ">
+            <div class="form-outline ">
+               <label for="validationDefault01 " class="form-label ">Prenom et Nom:</label>
+               <input type="text " class="form-control " placeholder="Nom" name="nom" [(ngModel)]="utilisateur.nom" required #nom="ngModel" minlength="5">
+               <div [hidden]="!utilisateurForm.submitted || nom.valid" class="alert alert-danger">Merci de renseigner le prenom et le nom</div>
+            </div>
+        </div>
+
+        <div class="col-md-4 ">
+            <div class="form-outline ">
+              <label for="validationDefault02 " class="form-label ">Age:</label>
+                <input type="number " class="form-control" name="age" [(ngModel)]="utilisateur.age" required #age="ngModel" />
+                <div [hidden]="!utilisateurForm.submitted || age.valid" class="alert alert-danger">Merci de renseigner l'âge</div>
+            </div>
+        </div>
+
+        <div class=" col-md-4 ">
+            <div class="form-outline ">
+              <label for="validationDefault03 " class="form-label ">Poste:</label>
+                <input type="text " class="form-control" name="poste" placeholder="Poste" [(ngModel)]="utilisateur.poste" required #poste="ngModel"/>
+                <div [hidden]="!utilisateurForm.submitted || poste.valid" class="alert alert-danger">Merci de renseigner le poste</div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 ">
+            <div class="form-outline ">
+              <label for="validationDefault04 " class="form-label ">Compétences:</label>
+                <input type="text " class="form-control" placeholder=" Saisisez trois compétences suivi de virgule" name="competences" [(ngModel)]="utilisateur.competences" required #competence="ngModel"/>
+                <div [hidden]="!utilisateurForm.submitted || competence.valid" class="alert alert-danger">Merci de renseigner au moins une compétence</div>
+              </div>
+        </div>
+
+        <div class="col-md-4 ">
+            <div class="form-outline ">
+              <label for="validationDefault05 " class="form-label ">Note:</label>
+                <input type="text "  class="form-control" placeholder="Une note: de 0 à 10" name="note" [(ngModel)]="utilisateur.note" required #note="ngModel"/>
+                <div [hidden]="!utilisateurForm.submitted || note.valid" class="alert alert-danger">Merci de renseigner une note</div>
+            </div>
+        </div>
+
+        <div class="col-md-4 ">
+
+          <div class="form-outline" *ngIf='selectionImage'>
+            <label for="validationDefault06" class="form-label ">Choix image</label>
+              <select type="text" class="form-control " name="image"  [(ngModel)]="utilisateur.image" required #image="ngModel">
+              <div [hidden]="!utilisateurForm.submitted || image.valid" class="alert alert-danger">Merci de choisir une image</div>
+              <option *ngFor="let image of choixImage | async">
+                {{image}}
+              </option>
+              </select>
+          </div>
+
+          <div class="form-outline"  *ngIf='!selectionImage'>
+              <label for="validationDefault06" class="form-label ">Image</label>
+                <input type="text" class="form-control " name="image"  [(ngModel)]="utilisateur.image" required #image="ngModel"/>
+                <div [hidden]="!utilisateurForm.submitted || image.valid" class="alert alert-danger">Merci de choisir une image</div>
+            </div>
+        </div>
+
+        <div class="col-12 ">
+          <button class="previous" class="btn btn-outline-secondary" (click)="precedent()">
+            <i class="left arrow icon"></i> &laquo; Precedent
+        </button>
+            <button type="submit" class="btn btn-outline-success float-right">Enregistrer</button>
+        </div>
+    </form>
+  </div>
+</div>
+

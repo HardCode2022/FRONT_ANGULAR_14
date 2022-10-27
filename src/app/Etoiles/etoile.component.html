@@ -1,0 +1,27 @@
+<div class="crop" (click)="clickEtoile()">
+<div *ngIf='largeur>=8'[title]="note"  >
+  <div style="width: 90px">
+  <span class="fa fa-star" style='color: #f3da35' ></span>
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  </div>
+</div>
+
+<div *ngIf='largeur<4 || largeur===4' [title]="note">
+  <div style="width: 90px">
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  </div>
+</div>
+
+<div *ngIf='largeur==6'[title]="note">
+  <div style="width: 90px">
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  <span class="fa fa-star" style='color: #f3da35'></span>
+  </div>
+</div>
+</div>

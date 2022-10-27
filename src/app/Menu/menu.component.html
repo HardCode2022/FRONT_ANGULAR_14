@@ -1,0 +1,17 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div>
+          <a href="http://localhost:4200/" class="navbar-brand">MON SITE</a>
+      </div>
+
+      <ul class="navbar-nav">
+          <li><a  *ngIf="authentificationService.estConnecter()" routerLink="/bienvenu"  class="nav-link">ACCEUIL</a></li>
+          <li><a  *ngIf="authentificationService.estConnecter()" routerLink="/utilisateurs" class="nav-link">LISTE DES UTILISATEURS</a></li>
+      </ul>
+
+      <ul class="navbar-nav navbar-collapse justify-content-end">
+          <li><a *ngIf="!authentificationService.estConnecter()" routerLink="/connexion" class="nav-link">Connexion</a></li>
+          <li><a *ngIf="authentificationService.estConnecter()"  routerLink="/deconnexion" class="nav-link">Deconnexion</a></li>
+      </ul>
+  </nav>
+</header>

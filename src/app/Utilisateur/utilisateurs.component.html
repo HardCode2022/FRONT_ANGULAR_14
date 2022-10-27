@@ -1,0 +1,59 @@
+<div class="card">
+<div class="card-header">
+<h1>{{titrePage |uppercase}}</h1>
+<div class="alert alert-success" *ngIf='message'> {{message}}</div>
+<div class="alert alert-success" *ngIf='noteMessage'> {{noteMessage}}</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="input-group">
+                <span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+                </span>
+                <input type="search" class="form-control mr-sm-2" placeholder="Effectuez une recherche avec le Prenom et Nom" [(ngModel)]='filtreUtilisateur'>
+                <button type="submit" class=" btn btn-warning" (click)="ajoutUtilisateur()">Ajout Utilisateur</button>
+                <button (click)="montrerNote()" class="btn btn-info">{{montrerNotes ? 'Cacher Notes' : 'Montrer Notes'}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
+<br>
+<div class="card-body">
+<div class="container ">
+    <table class="table " class="table table-striped " class="table table-bordered">
+        <thead class="table-info ">
+            <tr>
+                <th>Identifiants</th>
+                <th></th>
+                <th>Prénom et Nom</th>
+                <th>Age</th>
+                <th>Compétences</th>
+                <th>Poste</th>
+                <th *ngIf='montrerNotes'>Note</th>
+                <th>Etoiles</th>
+                <th>Gestion utilisateur</th>
+            </tr>
+        <tbody>
+            <tr *ngFor="let utilisateur of filtreUtilisateurs">
+                <td>{{utilisateur.id}}</td>
+                <td><img [src]='utilisateur.image' [title]='utilisateur.nom' [style.width.px]='imageWidth' [style.margin.px]='imageMarge' [style.size.px]='imageSize'></td>
+                <td> <a [routerLink]="['/utilisateurs',utilisateur.id]">{{utilisateur.nom}}</a></td>
+                <td>{{utilisateur.age }}</td>
+                <td>
+                 <span [outerHTML]="utilisateur.competences |lowercase| utilisateurPipe"></span>
+                </td>
+                <td>{{utilisateur.poste}}</td>
+                <td *ngIf='montrerNotes'>{{utilisateur.note}}</td>
+                <td>
+                  <app-etoile [note]='utilisateur.note' (noteClick)="etoileClick($event)"></app-etoile></td>
+                <td>
+                  <button (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">Supprimer</button>
+                  <button (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">Mise à jour</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+</div>
