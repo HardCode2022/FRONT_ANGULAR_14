@@ -21,7 +21,7 @@
 <br>
 <div class="card-body">
 <div class="container ">
-    <table class="table " class="table table-striped " class="table table-bordered">
+    <table class="table " border="0">
         <thead class="table-info ">
             <tr>
                 <th>Identifiants</th>
@@ -46,10 +46,18 @@
                 <td>{{utilisateur.poste}}</td>
                 <td *ngIf='montrerNotes'>{{utilisateur.note}}</td>
                 <td>
+                  <!-- Composant Etoile-->
                   <app-etoile [note]='utilisateur.note' (noteClick)="etoileClick($event)"></app-etoile></td>
                 <td>
-                  <button (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">Supprimer</button>
-                  <button (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">Mise à jour</button>
+                    <button  title="Suppression" (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">
+                      <span class="fa fa-trash"></span>
+                    </button>
+
+                    <button  title="Mise à jour" (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">
+                      <span class="fa fa-pen"></span>
+                    </button>
+                  <!--<button (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">Supprimer</button>-->
+                 <!-- <button (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">Mise à jour</button>-->
                 </td>
             </tr>
         </tbody>
