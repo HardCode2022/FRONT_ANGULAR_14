@@ -12,7 +12,7 @@ import { Utilisateur } from '../Utilisateur/utilisateurs.component';
 })
 export class AjoutUtilisateurComponent implements OnInit {
 
-  titre: string = "Ajout utilisateur"
+  titre: string = "Ajouter Un Utilisateur"
 
   constructor(private route: ActivatedRoute, private utilisateurService: UtilisateurService, private router: Router) { }
 

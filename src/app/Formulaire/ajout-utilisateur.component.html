@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h3>{{titre | uppercase}}</h3>
+    <h3 style="text-align: center;">{{ titre | uppercase }}</h3>
   <div class="alert alert-warning" *ngIf="utilisateurForm.dirty && utilisateurForm.invalid">Entrer une valeur valide pour chaque champ</div>
   <div class="alert alert-warning" *ngIf="utilisateurForm.dirty && nom.invalid">Entrer un prenom et un nom sur au moins cinq (5) caractères</div>
   </div>

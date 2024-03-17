@@ -23,7 +23,7 @@ export class UtilisateursComponent implements OnInit {
 
   noteMessage: string | undefined;
 
-  titrePage: string = "Liste des utilisateurs"
+  titrePage: string = "LISTE DES UTILISATEURS"
 
   utilisateurs: Utilisateur[] = [];
 
@@ -56,6 +56,7 @@ export class UtilisateursComponent implements OnInit {
       {
         next: dataUtilisateurs => {
           console.log(`Recuperation de la liste des utilisateurs`)
+          console.log(dataUtilisateurs)
           this.utilisateurs = dataUtilisateurs;
           this.filtreUtilisateurs = this.utilisateurs
         },
