@@ -14,13 +14,13 @@ export class AuthentificationService {
 
   constructor(private http: HttpClient) { }
 
-  connexion(adresseMail: any, motDePasse: any) {
+  /*connexion(adresseMail: any, motDePasse: any) {
     if (adresseMail === "defissucces@gmail.com" && motDePasse === "FormationFullStack") {
       sessionStorage.setItem(TOKEN, adresseMail)
       return true;
     }
     return false
-  }
+  }*/
 
   //SE CONNECTER AU BACK VIA JWT POUR RECUPERER LE TOKEN
   login(loginForm: LoginForm) {
