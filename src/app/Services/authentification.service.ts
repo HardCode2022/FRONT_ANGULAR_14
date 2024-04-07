@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginForm } from '../Connexion/connexion.component';
 import { URL_BACK_END_API } from '../app.constantes';
 import { map } from 'rxjs';
+import { LoginForm } from '../Connexion/LoginForm.component';
 
 export const CONNEXION_UTILISATEUR = 'Utilisateur'
 export const TOKEN = 'Token'
@@ -13,6 +13,7 @@ export const TOKEN = 'Token'
 export class AuthentificationService {
 
   constructor(private http: HttpClient) { }
+
 
   connexion(adresseMail: any, motDePasse: any) {
     if (adresseMail === "defissucces@gmail.com" && motDePasse === "FormationFullStack") {
@@ -37,11 +38,13 @@ export class AuthentificationService {
   }
 
   estConnecter() {
-    let utilisateur = sessionStorage.getItem(TOKEN);
-    return !(utilisateur === null);
+    let utilisateur = sessionStorage.getItem(CONNEXION_UTILISATEUR);
+    let token = sessionStorage.getItem(TOKEN);
+    return !(utilisateur === null && token === null);
   }
 
   deconneter() {
     sessionStorage.removeItem(TOKEN);
+    sessionStorage.removeItem(CONNEXION_UTILISATEUR);
   }
 }

@@ -6,21 +6,15 @@ import { Utilisateur } from '../Utilisateur/utilisateurs.component';
 import { TOKEN } from './authentification.service';
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class UtilisateurService {
 
   constructor(private http: HttpClient) { }
-
   //Appel de service au back end pour la recuperation des données(Liste Utilisateurs)
   recupererListeUtilisateurs() {
-
-    const token = sessionStorage.getItem(TOKEN);
-    const headers = new HttpHeaders().set('Authorization', `${token}`);
-
+    const headers = recuperationHeaders();
     return this.http.get<Utilisateur[]>(`${URL_BACK_END_API}/utilisateurs`, { headers }).pipe(
       map(
         data => {
@@ -31,8 +25,7 @@ export class UtilisateurService {
   }
   //Appel de service au back end pour la recuperation d'un utilisateur par ID
   recupererUtilisateurParId(id: number) {
-    const token = sessionStorage.getItem(TOKEN);
-    const headers = new HttpHeaders().set('Authorization', `${token}`);
+    const headers = recuperationHeaders();
     return this.http.get<Utilisateur>(`${URL_BACK_END_API}/utilisateurs/${id}`, { headers }).pipe(
       map(
         dataUtilisateur => {
@@ -43,30 +36,31 @@ export class UtilisateurService {
   }
   //Appel de service permettant la creation d'un utilisateur
   creationUtilisateur(utilisateur: any) {
-    const token = sessionStorage.getItem(TOKEN);
-    const headers = new HttpHeaders().set('Authorization', `${token}`);
+    const headers = recuperationHeaders();
     return this.http.post(`${URL_BACK_END_API}/utilisateurs/creation`, utilisateur, { headers });
   }
 
   //Appel de service pour la suppression d'un utilisateur
   suppressionUtilisateur(id: any) {
-    const token = sessionStorage.getItem(TOKEN);
-    const headers = new HttpHeaders().set('Authorization', `${token}`);
+    const headers = recuperationHeaders();
     return this.http.delete(`${URL_BACK_END_API}/utilisateur/suppression/${id}`, { headers });
   }
 
   //Appel de service pour la mise à jour d'un utilisateur
   miseAJOurUtilisateur(id: any, utilisateur: any) {
-    const token = sessionStorage.getItem(TOKEN);
-    const headers = new HttpHeaders().set('Authorization', `${token}`);
+    const headers = recuperationHeaders();
     return this.http.put(`${URL_BACK_END_API}/utilisateur/miseAjour/${id}`, utilisateur, { headers });
   }
 
   getImages(): Observable<string[]> {
     return of(['assets/images/bob.png', 'assets/images/alice.png', 'assets/images/Charles.png', 'assets/images/rob.png', 'assets/images/Kilian.png', 'assets/images/Roland.png']);
   }
-
-
 }
 
+//Fonction de recuperations du headers
+function recuperationHeaders() {
+  const token = sessionStorage.getItem(TOKEN);
+  const headers = new HttpHeaders().set('Authorization', `${token}`);
+  return headers;
+}
 

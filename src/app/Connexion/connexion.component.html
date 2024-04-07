@@ -22,13 +22,23 @@
                       <input type="text" class="form-control" name="username" placeholder="Votre Identifiant" [(ngModel)]="loginForm.username">
 
                   </div>
-                  <div class="input-group form-group">
+                  <!--<div class="input-group form-group">
                       <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-key"></i></span>
                       </div>
-                      <!--<input type="password" class="form-control" name="password " placeholder="Mot de passe" [(ngModel)]="motDePasse">-->
+                       <input type="password" class="form-control" name="password " placeholder="Mot de passe" [(ngModel)]="motDePasse">
                       <input type="password" class="form-control" name="password " placeholder="Mot de passe" [(ngModel)]="loginForm.password">
-                  </div>
+                  </div>-->
+
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" (click)="afficherCacherMDP()">
+                            <i class="fas" [ngClass]="{ 'fa-eye': passwordCacher, 'fa-eye-slash': !passwordCacher }"></i>
+                        </span>
+                    </div>
+                    <input type="{{ passwordCacher ? 'password' : 'text' }}" class="form-control" name="password" placeholder="Mot de passe" [(ngModel)]="loginForm.password">
+                </div>
+
                   <div class="row align-items-center remember">
                       <input type="checkbox">Se souvenir de moi
                   </div>

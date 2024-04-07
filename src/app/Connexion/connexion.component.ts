@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../Services/authentification.service';
 import { Observable } from 'rxjs';
+import { LoginForm } from './LoginForm.component';
 
-export const TOKEN = 'token'
+
 
 @Component({
   selector: 'app-connexion',
@@ -23,6 +24,7 @@ export class ConnexionComponent implements OnInit {
   //password: string = '';
 
   connexionInValide: boolean = false;
+  passwordCacher = true;
   messageErreur: string = 'Veuillez verifier les informations de connexion'
 
   ngOnInit(): void {
@@ -54,16 +56,10 @@ export class ConnexionComponent implements OnInit {
       }
     );
   }
-}
 
-export class LoginForm {
-
-  username: string;
-  password: string;
-
-  constructor(username: string = '', password: string = '') {
-    this.username = username;
-    this.password = password;
+  afficherCacherMDP() {
+    this.passwordCacher = !this.passwordCacher;
   }
 }
+
 
