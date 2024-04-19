@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { ConnexionComponent } from './Connexion/connexion.component';
 import { DeconnexionComponent } from './Deconnexion/deconnexion.component';
 import { ErreurComponent } from './Erreur/erreur.component';
 import { EtoileComponent } from './Etoiles/etoile.component';
+import { JwtInterceptorService } from './Services/jwt-interceptor.service';
 
 
 @NgModule({
@@ -32,13 +33,8 @@ import { EtoileComponent } from './Etoiles/etoile.component';
     EtoileComponent
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
