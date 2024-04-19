@@ -28,16 +28,6 @@ export class ConnexionComponent implements OnInit {
   messageErreur: string = 'Veuillez verifier les informations de connexion'
 
   ngOnInit(): void {
-
-  }
-
-  connexionUtilisateur() {
-    if (this.connexionService.connexion(this.adresseMail, this.motDePasse)) {
-      this.router.navigate(['bienvenu']);
-      this.connexionInValide = false;
-    } else {
-      this.connexionInValide = true;
-    }
   }
 
   //Connexion au back end par JWT
