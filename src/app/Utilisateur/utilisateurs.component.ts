@@ -31,6 +31,10 @@ export class UtilisateursComponent implements OnInit {
 
   _filtreUtilisateur!: string;
 
+  // Déclaration des propriétés
+  showConfirmationDialog: boolean = false;
+  userIdToBeDeleted: number | null = null;
+
 
   public get filtreUtilisateur(): string {
     return this._filtreUtilisateur;
@@ -86,7 +90,8 @@ export class UtilisateursComponent implements OnInit {
     this.utilisateurService.suppressionUtilisateur(id).subscribe(
       data => {
         console.log(data)
-        this.message = `L'utilisateur avec l'id ${id} à été supprimer avec succès`;
+        //this.message = `L'utilisateur avec l'id ${id} à été supprimer avec succès`;
+        this.showConfirmationDialog = false;
         this.recuperationListeUtilisateurs();
       }
     )
@@ -94,6 +99,23 @@ export class UtilisateursComponent implements OnInit {
 
   etoileClick(message: string) {
     this.noteMessage = 'La note de l`utilisateur selectionné est de :  ' + message
+  }
+
+  // Fonction pour afficher la boîte de dialogue de confirmation de suppression
+  afficherConfirmationSuppression(id: number): void {
+    this.userIdToBeDeleted = id;
+    this.showConfirmationDialog = true;
+  }
+
+  // Fonction pour confirmer ou annuler la suppression
+  confirmerSuppression(confirmed: boolean): void {
+    if (confirmed && this.userIdToBeDeleted !== null) {
+      this.suppression(this.userIdToBeDeleted);
+    } else {
+      // Réinitialiser les variables
+      this.userIdToBeDeleted = null;
+      this.showConfirmationDialog = false;
+    }
   }
 
 }

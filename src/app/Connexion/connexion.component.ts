@@ -17,11 +17,6 @@ export class ConnexionComponent implements OnInit {
 
   constructor(private connexionService: AuthentificationService, private router: Router) { }
 
-  adresseMail = 'defissucces@gmail.com';
-  motDePasse = '';
-
-  //username: string = '';
-  //password: string = '';
 
   connexionInValide: boolean = false;
   passwordCacher = true;

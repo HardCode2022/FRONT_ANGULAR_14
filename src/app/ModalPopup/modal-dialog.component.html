@@ -1,0 +1,17 @@
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation de suppression</h5>
+      </div>
+      <div class="modal-body">
+        <p>Voulez-vous vraiment supprimer l'utilisateur avec l'ID  {{ userId }} ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="confirmerSuppression(false)">Annuler</button>
+        <button type="button" class="btn btn-outline-danger" (click)="confirmerSuppression(true)">Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -52,15 +52,16 @@
                   <button  title="Mise à jour" (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">
                     <span class="fa fa-pen"></span>
                   </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button  title="Suppression" (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">
+                    <button  title="Suppression" (click)="afficherConfirmationSuppression(utilisateur.id)" class="btn btn-outline-danger">
                       <span class="fa fa-trash"></span>
                     </button>
-                  <!--<button (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">Supprimer</button>-->
-                 <!-- <button (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">Mise à jour</button>-->
                 </td>
             </tr>
         </tbody>
+
     </table>
   </div>
 </div>
 </div>
+<!-- Ajout le composant de dialogue modal-->
+<app-modal-dialog *ngIf="showConfirmationDialog" (confirmed)="confirmerSuppression($event)" [userId]="userIdToBeDeleted"></app-modal-dialog>

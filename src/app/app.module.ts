@@ -16,6 +16,7 @@ import { DeconnexionComponent } from './Deconnexion/deconnexion.component';
 import { ErreurComponent } from './Erreur/erreur.component';
 import { EtoileComponent } from './Etoiles/etoile.component';
 import { JwtInterceptorService } from './Services/jwt-interceptor.service';
+import { ModalDialogComponent } from './ModalPopup/modal-dialog.component';
 
 
 @NgModule({
@@ -30,8 +31,8 @@ import { JwtInterceptorService } from './Services/jwt-interceptor.service';
     ConnexionComponent,
     DeconnexionComponent,
     ErreurComponent,
-    EtoileComponent
-
+    EtoileComponent,
+    ModalDialogComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }],
