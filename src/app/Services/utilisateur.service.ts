@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 import { URL_BACK_END_API } from '../app.constantes';
 import { Utilisateur } from '../Utilisateur/utilisateurs.component';
+import { TOKEN } from './authentification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -33,11 +34,13 @@ export class UtilisateurService {
   }
   //Appel de service permettant la creation d'un utilisateur
   creationUtilisateur(utilisateur: any) {
+
     return this.http.post(`${URL_BACK_END_API}/utilisateurs/creation`, utilisateur);
   }
 
   //Appel de service pour la suppression d'un utilisateur
   suppressionUtilisateur(id: any) {
+
     return this.http.delete(`${URL_BACK_END_API}/utilisateur/suppression/${id}`);
   }
 

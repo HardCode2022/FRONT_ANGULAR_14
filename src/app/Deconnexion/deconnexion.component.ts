@@ -16,5 +16,6 @@ export class DeconnexionComponent implements OnInit {
 
   ngOnInit(): void {
     this.connexionService.deconneter();
+    this.router.navigate(['connexion']);
   }
 }

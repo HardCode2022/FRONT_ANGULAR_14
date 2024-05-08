@@ -18,20 +18,22 @@
                       <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-user"></i></span>
                       </div>
-                      <input type="text" class="form-control" name="username" placeholder="Adresse mail" [(ngModel)]="adresseMail">
+                      <input type="text" class="form-control" name="username" placeholder="Identifiant" [(ngModel)]="loginForm.username">
 
                   </div>
                   <div class="input-group form-group">
                       <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-key"></i></span>
+                          <span class="input-group-text" (click)="afficherMDP()">
+                            <i class="fas"  [ngClass]="{'fa-eye':passwordCacher , 'fa-eye-slash':!passwordCacher}"></i>
+                          </span>
                       </div>
-                      <input type="password" class="form-control" name="password " placeholder="Mot de passe" [(ngModel)]="motDePasse">
+                      <input type="{{passwordCacher ? 'password':'text'}}" class="form-control" name="password " placeholder="Mot de passe" [(ngModel)]="loginForm.password">
                   </div>
                   <div class="row align-items-center remember">
                       <input type="checkbox">Se souvenir de moi
                   </div>
                   <div class="form-group">
-                      <button class="btn btn-warning float-right" (click)="connexionUtilisateur()" >Connexion</button>
+                      <button class="btn btn-warning float-right" (click)="loginUser()" >Connexion</button>
                   </div>
               </form>
           </div>

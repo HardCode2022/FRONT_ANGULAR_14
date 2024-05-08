@@ -49,15 +49,8 @@
                   <!-- Composant Etoile-->
                   <app-etoile [note]='utilisateur.note' (noteClick)="etoileClick($event)"></app-etoile></td>
                 <td>
-                    <button  title="Suppression" (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">
-                      <span class="fa fa-trash"></span>
-                    </button>
-
-                    <button  title="Mise à jour" (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">
-                      <span class="fa fa-pen"></span>
-                    </button>
-                  <!--<button (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">Supprimer</button>-->
-                 <!-- <button (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">Mise à jour</button>-->
+                  <button (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">Supprimer</button>
+                  <button (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">Mise à jour</button>
                 </td>
             </tr>
         </tbody>

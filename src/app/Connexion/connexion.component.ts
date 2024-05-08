@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../Services/authentification.service';
+import { LoginForm } from './loginForm.component';
 
 
 @Component({
@@ -9,6 +10,10 @@ import { AuthentificationService } from '../Services/authentification.service';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
+
+  loginForm: LoginForm = new LoginForm();
+
+  passwordCacher: boolean = true;
 
   constructor(private connexionService: AuthentificationService, private router: Router) { }
 
@@ -21,12 +26,30 @@ export class ConnexionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  connexionUtilisateur() {
+  /*connexionUtilisateur() {
     if (this.connexionService.connexion(this.adresseMail, this.motDePasse)) {
       this.router.navigate(['bienvenu']);
       this.connexionInValide = false;
     } else {
       this.connexionInValide = true;
     }
+  }*/
+
+  loginUser() {
+    this.connexionService.authUser(this.loginForm).subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['bienvenu']);
+        this.connexionInValide = false;
+      },
+      error => {
+        console.log(error);
+        this.connexionInValide = true;
+      }
+    );
+  }
+
+  afficherMDP() {
+    this.passwordCacher = !this.passwordCacher;
   }
 }
