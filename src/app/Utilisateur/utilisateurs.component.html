@@ -12,6 +12,7 @@
                 </span>
                 <input type="search" class="form-control mr-sm-2" placeholder="Effectuez une recherche avec le Prenom et Nom" [(ngModel)]='filtreUtilisateur'>
                 <button type="submit" class=" btn btn-warning" (click)="ajoutUtilisateur()">Ajout Utilisateur</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button (click)="montrerNote()" class="btn btn-info">{{montrerNotes ? 'Cacher Notes' : 'Montrer Notes'}}</button>
             </div>
         </div>
@@ -21,7 +22,7 @@
 <br>
 <div class="card-body">
 <div class="container ">
-    <table class="table " border="0">
+    <table class="table">
         <thead class="table-info ">
             <tr>
                 <th>Identifiants</th>
@@ -49,8 +50,13 @@
                   <!-- Composant Etoile-->
                   <app-etoile [note]='utilisateur.note' (noteClick)="etoileClick($event)"></app-etoile></td>
                 <td>
-                  <button (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">Supprimer</button>
-                  <button (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">Mise à jour</button>
+                  <button title="Suppression"  (click)="suppression(utilisateur.id)" class="btn btn-outline-danger">
+                    <span class="fa fa-trash"></span>
+                 </button>
+                 &nbsp;&nbsp;&nbsp;
+                  <button  title="Mise à jour" (click)="miseAJour(utilisateur.id)" class="btn btn-outline-info">
+                    <span class="fa fa-pen"></span>
+                </button>
                 </td>
             </tr>
         </tbody>
